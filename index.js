@@ -85,9 +85,15 @@ Use the finalScore function below to do the following:
 */ 
 
 function finalScore(inningCb, inningsPlay){
+  let homeScore = 0;
+  let awayScore = 0;
+  for(let i = 0; i < inningsPlay; i++){
+    homeScore = homeScore + inningCb();
+    awayScore = awayScore + inningCb();
+  }
   return {
-    Home: inningCb() * inningsPlay,
-    Away: inningCb() * inningsPlay
+    Home: homeScore,
+    Away: awayScore 
   };
 }
 console.log(finalScore(inning, 9))
@@ -103,7 +109,7 @@ function getInningScore(inningCb) {
     Away: inningCb()
 }
 }
-
+console.log()
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -150,21 +156,22 @@ function scoreboard(getInningScoreCb, inningCb, inningsPlay) {
   // empty array to push scores to.
   const scores = []
   // scores start at 0.
-  let home = 0;
-  let away = 0;
+  let homeScore = 0;
+  let awayScore = 0;
 
   for(let i = 0; i < inningsPlay; i++){
     const currentScore = getInningScoreCb(inningCb);
-    let homeScore = home + currentScore.Home;
-    let awayScore = away + currentScore.Away;
-    scores.push(`Inning ${i + 1}: Away ${awayScore} - Home ${homeScore}`)
 
-    if(homeScore === awayScore){
-      scores.push(`This game will require extra innings: Away ${awayScore} - Home ${homeScore}`)
-    }
-    else{ 
-      scores.push(`Final Score: Away ${awayScore} - Home ${homeScore}`)
-    }
+    homeScore = homeScore + currentScore.Home;
+    awayScore = awayScore + currentScore.Away;
+
+    scores.push(`Inning ${i + 1}: Away ${currentScore.Away} - Home ${currentScore.Home}`)
+  }
+  if(homeScore === awayScore){
+    scores.push(`This game will require extra innings: Away ${awayScore} - Home ${homeScore}`)
+  }
+  else{ 
+    scores.push(`Final Score: Away ${awayScore} - Home ${homeScore}`)
   }
   return scores
 }
