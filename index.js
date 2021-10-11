@@ -84,9 +84,13 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningCb, inningsPlay){
+  return {
+    Home: inningCb() * inningsPlay,
+    Away: inningCb() * inningsPlay
+  };
 }
+console.log(finalScore(inning, 9))
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
