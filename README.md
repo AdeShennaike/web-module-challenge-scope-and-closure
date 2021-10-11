@@ -61,6 +61,7 @@ You will be running your tests in one terminal and debugging in the other. As yo
 Edit the `ReadMe` file with your answers to the questions below.
 
 1. In your own words, define closure (1-2 sentences).
+Closure happens when a function is created inside of a function.
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -82,8 +83,12 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+The closure is used at 'return function' since that is a function being created and reaches out itself to grab something within the personalDice function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+It rolls a random number 2 times. It could possibly be the same or 2 different numbers but the way it gets the number will remain the same. 
+
+c. What is the lexical scope of `newRoll`? personalDice. It exist inside of it and has access to everything within it.
 
 
 ### Task 3 - Stretch Goals
